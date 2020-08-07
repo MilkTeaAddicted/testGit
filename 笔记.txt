@@ -1,0 +1,852 @@
+1】h标签和p标签
+    1）h1标签因为过于重要所以一个网页只能有一个h1标签，而h2之后到h6可以有多个
+    两对连续的p标签里面的内容之间有一行空余
+    2）p双标签里面空格是无效的，或是说这只能显示出多个空格中的一个
+2】文本修饰标签
+    1)<strog></strong>双标签即是先在框架内将内容再写入修饰符中表示加粗
+    2）<em></em>标签，对文本进行斜体化操作
+    3）<sub><sub>也是双标签，分别是下标和上标，是特殊的修饰（例：可以用来书写化学方程式）
+    4）<del><ins>也是双标签，表示删除线和下滑线
+3】图片标签和图片属性
+    1）img加上tab键vscode会自动生成这个：<img src="" alt="">图片标签是单标签
+        现对图片下各属性进行阐述：
+        1、src=后面输入图片的网页地址，复制粘贴后可以自动导入
+        2、alt是党图片出现问题是可以给用户显示一个友好的提示文字=号后面的双引号内可以加上一段描述性文字。
+        3、title是提示信息，写法如下<img src="" alt=""title="提示信息">当用户的鼠标移动到图片上去的时候可以显示图片的信息
+        4、width与height用法格式同上内输入图片的高与宽度，其单位为可写可不写
+        **注意**不写w和h 时候加载前段落连在一块加载后图片把段落撑开，写了就一直给图片预留一个空位。
+4】引入文件的地址和路径（写在src=“”的双引号中）
+    1）相对路径
+        1、 .表示当前路径
+        2、 ..表示相对于上一级的路径。
+     下面是示例：./img/dog.jpg(几个文件夹就有几个斜杠)./dog.jpg(无文件夹写法)../img/dog.jpg
+        **总之可以复制粘贴地址**
+    2）绝对路径
+        1、绝对路径无参照，是真真实实的要复制完整的地址，如完整复制网页的地址
+     **初学者为了可移植性建议是用相对路径进行表示**
+     **电脑中的地址可以用斜线也可以用反斜线，但网络地址一定要用斜线**
+5】跳转链接（15）
+    1）双标签<a>标签，其属性包括herf和target属性，表示如下：<a href="网页的超链接地址">对网页的描述</a>
+        1、herf属性描述的是网页的超链接的地址，直接复制粘贴网页地址于引号中就行。其特点是在原窗口中跳转，不另外地去开一个窗口，原有的窗口消失
+        2、target属性，改变窗口的打开方式，默认情况下可以在当前页面打开_self，如果要在新的窗口打开用_blank
+         示例：<a href="网页的超链接地址" target="_blank">对网页的描述</a>就是表示要求新开一个窗口
+    2）<base>单标签，其作用是改变链接的默认行为的，其用法一般是写在头文件里，如下所示：
+                    **<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <!-- title>Document<title> --> -->
+                <base target="_blank">（**注意此处将所有链接的打开方式变成了另开一个窗口**）
+            </head>
+6】跳转锚点（即是不改变网页的情况下对当前页面进行跳转）
+    1）第一种实现的方法：#加上对应的id属性
+        ：示例 :<a href=“#html">地址1</a>
+                    <h2 id="html">副标题</h2>
+            即先在herf中用#前缀描述地址，然后在标题内添加属性id标注，即可以通过点击链接跳到当前的标题
+    2）第二种实现方法：#加上name属性
+        示例：<a href=“#html">地址1</a>
+                <h2 name="html">副标题</h2>
+            即先在herf中用#前缀描述地址，然后另外开一个<a>双标签，内添加属性name标注，即可以通过点击链接跳到当前<a>标签所在的位置中
+7】特殊符号
+   不同的特殊符号无法用输入法打出，得用代码表示，网上有专门的的表可以查到
+   例如空格符号用&nbsp;（可以在p里面添加几个空格使之显示）来表示，一般情况下vscode会自动查找可能的符号代码比较方便。而且如果想在网页内表示关键的标签例如<html>这时候我们一般是用&lt;html&lg;来进行表示。要求记住基本的字符。
+8】无序列表
+    <ul>标签和<Li>标签，要求要符合列表嵌套的规范，基本要求是ul和li中间不能嵌套有其他标签，类似于<p>标签之类的，以下的标签的使用示范
+    <ul>（注意ul和li这里不能出现其他标签）
+        <li>第一项</li>
+        <li>第二项（但li之间可以出现其他的标签 ，包括提供一些链接）</li>
+        <li>第三项</li>
+    </ul>    
+    1）type属性，指的是改变列表样式
+        个示范的例子一般默认显示出来会在列表的目录前会有一个实心圆进行表示，但是通过添加type属性可以将实心圆改成别的样式，比如空心圆，下列代码即是对列表目录前面的空心圆的实现：
+                <ul type="circle">（注意ul和li这里不能出现其他标签）
+                        <li>第一项</li>
+                        <li>第二项（但li之间可以出现其他的标签 ，包括提供一些链接）</li>
+                        <li>第三项</li>
+                </ul>
+    本质上是通过css来实现的，样式可以查询网络（见收藏夹的网站）
+    *列表使用示例
+        <ul>（注意ul和li这里不能出现其他标签）
+                <li><a href="跳转网页地址1"><Strong>强调的内容</Strong></a></li>
+                <li><a href="跳转网页地址2">对即将要跳转的网页的表述</a></li>
+                <li><a href="跳转网页地址3"><Strong>对即将要跳转的网页的描述</Strong></a></li>
+        </ul> 
+8】有序列表
+    其写法格式如下，使用规范也如下，一般是用于做排行榜。但一般上用无序列表进行编辑
+    <ol>
+            <li></li>
+    </ol>
+    一般上来说是会将无序列表展现出的每一个列表项前面的实心圆点替换成数字，然后数字进行升并向下排列，展现出来的效果如下
+        1.第一项
+        2.第二项
+        3.第三项
+    同时我们亦可以对有序列表添加type属性，其用法的格式同无序列表，同时其对应的代码可以查阅网站整理的资料
+9】定义列表
+    一般来说当我们要对列表的目录进行添加标题或者对标题进行描述时我们要用到定义列表，一般来说标签有dl,dt,dd。
+    实质上和有序列表还有无序列表是独立的类型，是另一种列表形式，只不过这一种形式允许对列表目录内容进行描述。
+    使用示例如下：
+        <dl>
+            <dt>标题1</dt>
+            <dd>对标题1的描述</dd>
+            <dt>标题2</dt>
+            <dd>对标题二的描述</dd>
+        </dl>
+    其展现的效果如下：
+    标题1
+        对标题1的描述
+    标题2
+        对标题二的描述
+    也就是说描述会比列表项标题缩进一个
+10】嵌套列表
+    列表之间可以相互嵌套形成多层级的列表，以下是举例
+            <ul>
+            <Li>安徽</Li>
+                    <ul>
+                        <li>合肥</li>
+                        <li>巢湖</li>
+                        <li>马鞍山</li>
+                    </ul>
+            <Li>河北</Li>
+            <Li>黑龙江</Li>
+            </ul>
+    ***要点，每创建一个列表都要重新又一个ul标签，中间的各种li是平行关系，而ul决定上下级的关系
+11】表格标签
+    涉及到表格标签的有以下几类：
+    1）<table></table>表格的最外层容器
+    2）<th></th>定义表头（其实也是定义列）
+    3)<td></td>定义表格单元
+    4)<caption></caption>定义表格标题
+    5) <tr></tr>定义表格行
+    这几个是有嵌套关系的要符合嵌套规范，示例如下：
+        <table>
+                <tr>
+                    <th>日期</th>
+                    <th>天气建议</th>
+                    <th>出行情况</th>
+                </tr>
+                <tr>
+                    <td>2020/1/18</td>
+                    <td>阴天</td>
+                    <td>记得带伞</td>
+                </tr>
+                <tr>
+                    <td>2020/1/19</td>
+                    <Td>小雨</Td>
+                    <Td>记得带伞</Td>
+                </tr>
+        </table>
+    其最终示例如下：
+        日期        天气情况        出行建议
+        2020/1/18   阴天            记得带伞
+        2020/1/19   小雨            记得带伞
+    也可以用语义化的thead,tbody,tfood来描述，代码如下：
+        <table>
+                <thead> 
+                    <tr>
+                        <th>日期</th>
+                        <th>天气情况</th>
+                        <th>出行情况</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2020/1/18</td>
+                        <td>阴天</td>
+                        <td>记得带伞</td>
+                    </tr>
+                    <tr>
+                        <td>2020/1/19</td>
+                        <Td>小雨</Td>
+                        <Td>记得带伞</Td>
+                    </tr>
+                </tbody>
+                <tfoot> 
+                    以上是对未来天气的预测
+                </tfoot>
+        </table>
+    其表现出来的效果如下：
+        以上是对未来天气的预测
+        日期	天气情况	出行情况
+        2020/1/18	阴天	记得带伞
+        2020/1/19	小雨	记得带伞
+        好奇怪为什么tfood在表格的上面......
+    注意下：在一个表格中thead和tfood只能出现一次,而tbody可以出现多次。
+12】表格属性
+    对表格进行修饰化操作,其基本属性如下：
+    1）border=""对表格添加边框
+    2)cellpanding=""定义单元格之内的空间大小
+    3)cellspacing=“”定义单元格之间的空间大小
+    4)rowspan合并行
+    5)colspan合并列
+    6)align左右对齐方式:left、right、center
+    7)valign上下对齐方式:bottom、top、middle
+    以下是使用示例
+    <table border="1"【定义边框格式为1】 cellpanding="30"【边框内单元格的大小是30】 cellspacing="30" 【单元格之间的大小是30】align="right"【表格在网页显示的时候整体右移】>
+       <thead align="right"【表头右对齐】> 
+            <tr>
+                <th colspan="2"【在此行中合并两列】>日期</th>
+                <th>天气情况</th>
+                <th>出行情况</th>
+            </tr>
+        </thead>
+        <tbody align="right">
+            <tr rowspan="2"【在此列中合并两行】>
+                <td>2020/1/18</td>
+                <td>白天</td>
+                <td>阴天</td>
+                <td>记得带伞</td>
+            </tr>
+            <tr>
+                <td>2020/1/18</td>
+                <td>夜晚</td>
+                <td>下雨</td>
+                <td>记得带伞</td>
+            </tr>
+            <tr rowspan="2">
+                <td>2020/1/18</td>
+                <td>白天</td>
+                <td>阴天</td>
+                <td>记得带伞</td>
+            </tr>
+            <tr>
+                <td>2020/1/19</td>
+                <td>夜晚</td>
+                <Td>小雨</Td>
+                <Td>记得带伞</Td>
+            </tr>
+        </tbody>
+        <tfoot align="right"> 以上是对未来天气的预测</tfoot>
+    </table>
+    效果如下：（复制粘贴来的）
+
+                        以上是对未来天气的预测
+                    日期	天气情况	出行情况
+                    2020/1/18	白天	阴天	记得带伞
+                    2020/1/18	夜晚	下雨	记得带伞
+                    2020/1/18	白天	阴天	记得带伞
+                    2020/1/19	夜晚	小雨	记得带伞
+13】表单标签
+    表单和表格不一样，没有严格的嵌套规范
+    1)<form>标签，表单的最外层容器。
+    2）<input>标签，用于搜索用户信息，根据不同的type属性，展示不同的控件，如输入框，密码框，复选框。
+     其可选用的type属性如下：
+        type属性        含义
+        text           普通的文本输入框
+        password       密码输入框
+        checkbox       复选框
+        radio          单选框
+        file           上传文件
+        sub            提交按钮
+        reset          重置按钮
+    以下是对input和form的使用方法示例:
+            <form action="www.baidu.com"> <!--指的是提交的文件发送到百度这个网址-->
+                <h2>输入框</h2>
+                <input type="text">
+                <h2>请输入密码</h2>
+                <input type="password">
+                <h2>复选框</h2>
+                <input type="checkbox">苹果
+                <input type="checkbox">香蕉
+                <input type="checkbox">梨子
+                <h2>单选</h2>
+                <input type="radio" name="gendar">男<!--注意如果没有name进行属性统一的话就会变成多选-->
+                <input type="radio" name="gendar">女
+                <h2>上传文件</h2>
+                <input type="file">
+                <h2>提交按钮和重置按钮</h2>
+                <input type="submit">
+                <input type="reset">
+            </form>
+    【表格表单组合实例】
+        首先写好一个大表格后添加进表单
+        然后进行各种格式调整，总之首先要有一个表格的样式然后对表格进行细化（这就是为什么先要有网页设计师设计后然后再编程）
+【14】重点**div和span
+    1)div标签代表的是一个一个块状区域，是一个容器，可以容纳标题表格表单等等元素，相当于c语言中大括号的作用，div中可以有div嵌套。
+    2）span表示内联，修饰文字用
+    div和span没有任何的样式，需要根据css来制定。
+    div是划分区域的，划分一个大的平行区域，比如网页上查找到的每一个浏览结果都是由div划分的，而span可以标注样式，相当于在一个段落的文字中用荧光笔突出想要的部分，接下来是例子
+      <div style="    ">
+            文字<span style="color:red">真好看</span>对呀
+      </div>
+【15】css语法格式
+    1）基本格式如下：
+        选择器{属性1：值1；属性2：值2}，以下为使用示例：
+                    <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>div { width: 1000px;background-color: aqua;height: 100px;}</style>
+                <!--上面的style的意思是以下所有的div 标签内的东西都是大括号内的样式-->
+            </head>
+            <body>
+                <div>文字<span>真好看</span>对呀</div>
+            </body>
+            </html>
+    px是像素是长度单位,百分比也是长度单位，表示占显示器的显示的比例，符号为%。至于其他长宽高怎么表示可以去网站查一下 。
+    2)css的注释该和c语言一样/*  */（快捷键是shift alt+a)
+【16】内联样式和内部样式
+    1）内联样式（行样式）例子见14
+        格式是在标签里添加style属性。
+    2）内部样式：
+        添加style标签。例子见15
+        注释：内部样式的特点：可以用复用代码。不用写多次，相当于定义默认化。
+【17】外部样式和它的两种写法。
+    外部样式指的是从外部引入一个css文件，然后使用其格式，格式名默认如下：name.css。
+    总之首先你得创建一个css文件，然后在里面写内部样式（注意是内部样式不是内联样式，然后引入来使用它）
+    下面介绍其两种引入方法;
+    1）通过link标签引入：
+        link标签代表了网页和外部资源的一个映射关系，通过其我们可以调用外部资源。
+        以下是link标签的两种属性：
+        1、rel属性。指定资源和页面的关系
+        2、href属性：表述资源的地址
+        下面是使用案例：
+        <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <link rel="stylesheet" href="自己创建的css文件的地址">
+                <!--这里默认的是链接外部样式表，但还可以链接其他样式，可以上网站搜-->
+            </head>
+            <body>
+                <div>文字<span>真好看</span>对呀</div>
+            </body>
+            </html>
+    1）@import方式引入，
+        一般来说不建议使用，但还是认识一下。
+        例子如下：
+                    <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+                @import url(样式的相对地址);
+                </style>
+            </head>
+            <body>
+                <div>文字<span>真好看</span>对呀</div>
+            </body>
+            </html>
+【18】css中的颜色表示方法
+    首先是属性，关于颜色的属性有：background-color: border-color: 还有单纯的color
+    下面展示样式的表示方法
+    1）单词表示法：red blue green颜色表示方法可以上网搜色图
+    2）16进制表示法：从#000000（最小的颜色：黑色）一直到#ffffff(最大的颜色：白色)可以用来精准调色
+          常用的有#ff0000（红色）
+    3）rgb三原色表示法：
+     表示方法如下：
+      rgb(index,index,index)；
+      index的取值可以是从0到255，其中上述三个index分别是红绿蓝，然后调数值混色。
+  关于获取颜色：
+   方法1：这是一个提取网页颜色的插件的下载地址：
+    https://www.baidufe.com/fehelper/index/index.html
+   方法2：打开360浏览器的截图插件，会自动显示鼠标移动区域的颜色,以rbg的格式来显示。
+   方法3：ps提取
+【19】背景样式（在style下的属性)
+    属性基本上如下，了解即可：
+    background-color:背景颜色
+    background-image:背景图片：使用方法如下:
+                style="background-image: url(图片的地址)"
+            默认会水平平铺满背景，改变默认值需要以下属性：
+                    background-position:背景图片的位置
+                        格式如下
+                        background-position: 100px 00px(x和y轴的表示方法)
+                        background-position: right bottom
+                    background-repeat: 背景图片的平铺方式：
+                      参数如下：repeat-x和repeat-y和repeat(x,y)和no-repeat(平铺方式)
+                      示例：background-repeat:repeat-y；y轴平铺 
+                    background-attachment:背景图片滚动条的移动方式:
+                        scroll（设置了滚动条,由于用法参数可以直接显示所以就懒得打其他的了，至于用法可以自己去查）
+                        其中有个属性可以不随着滚动条移动（fix）司马页游广告就是用这个写的。
+                        但也可以利用背景固定的思想写出一个超级炫酷的视觉差网页。操作原理非常简单，详情见b站的教程。
+【20】css边框样式 （比如给div块画一个界面）
+    border-style:边框样式：
+                    solid:实线
+                    dashed:虚线
+                    dotted:点线 
+                    .....其他有具体的提示
+    border-width:边框大小：px
+    border-color:边框颜色:rgd()
+    复合样式：border-top-样式
+             border-left-样式
+             border-bottom-样式
+             border-right-样式
+【21】边框实线三角形：通过缩小边框增粗然后使得中间的间隙不存在，再隐形其他三个边就得到一个指定箭头方向的三角形，
+【22】family字体类型
+    font-family字体类型：
+        英文字体：arial/“Time New Roman”（只支持英文，不支持中文）
+        中文字体：微软雅黑(Microsoft YaHei)，宋体(SimSun)
+        使用示例如下：
+        <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+                    div{font-family:cursive;}
+                    <!--我喜欢这个英文字体，有点幼体，其中cursive所占的属性也可以用中文-->
+                </style>
+            </head>
+            <body>
+                <div>this is a word</div>
+            </body>
+            </html>
+        衬线体和非衬线体：展示效果相当于英文的花体和正体，或者雅黑体和宋体的区别，设计的区别
+        多字体设置选择的优先级：例如 div{font-family:'Times New Roman', Times, serif;}这样的一个多字体的格式，电脑显示网页时，先从第一个字体开始，如果没有这个字体就显示第二个字体，以此类推，如果都没有就采用默认字体。多字体相当于备选方案。
+        何时该在字体外扩上引号：例如“Time New Roman”这样的含有空格的字体必须得加上引号
+【23】字体大小粗细样式颜色：
+        1)大小（一般建议是偶数，这样文字容易对齐）
+        一般默认情况下是16个像素，即      div{font-size: 16px;}
+        示例还有      div{font-size: medium;}
+        2)粗细
+        示例如下：
+        加粗： div{font-weight: bold;}
+        正常： div{font-weight: normal;}
+        数值表示（100-500都是正常的，600以后都是加粗的）
+        3）字体样式
+        一般有正常和斜体两种常用：
+        div{font-style: italic;}这是斜体的表示方法
+        4）字体颜色：color
+【24】段落样式
+    1）text-decoration:文本装饰
+        下划线、删除线、上划线
+        使用示例如下：
+         p{text-decoration:underline ;}下划线
+         p{text-decoration:dotted;}加点
+         p{text-decoration:line-through;}删除线
+         p{text-decoration:overline }上划线
+         p{text-decoration:overline }不装饰
+         添加多个文本修饰：即是把逗号隔开操作去掉，空格隔开
+         p{text-decoration:overline underline line-through;}
+    2）text-transform:文本大小写（针对英文）
+        p{text-transform: lowercase; }全部转小写
+【25】文本缩进和文本对齐：
+    1）text-indent:文本缩进，一般默认是首行缩进。
+          p{text-indent: 20px; }首行缩进二十个像素,两个字看字体大小
+          em单位:相对单位1em永远等于一个字体大小，比如缩进两个：p{text-indent: 2em; }
+    2）text-align:文本的对齐方式，具体有中心对齐左对齐右对齐，常用左对齐left，还有一种justify，左右对齐，根据浏览器放大缩小改变行列。
+【26】文本的行高:line-height
+    多行文字的上边距下边距和本身文字大小，默认行高不是固定值，根据字体大小进行调整。
+    表示方法如下：
+            1）像素表示：0px
+            2) 比例表示：1（倍字体大小）2（两倍字体大小）
+【27】文本间距和英文折行
+    1）文本间距
+        letter-spacing:定义字（字母）间距，用法同26
+        word-spacing:定义单词之间的间距，用法同上,对中文无效。
+    2）英文强制折行：
+       折行的意义：当文本超出块边框定义的范围的时候，文本会自动折行保证美观
+        word-break:break-all :非常强烈的折行，不留空隙
+        word-wrap: break-word:不那么强烈的折行，留有空隙，比较美观。
+【28】精准格式对应
+    <style>#p{word-wrap: break-word; }</style> 
+    <p id="p1">zjhsjhhaojah</p>
+【29】css复合样式
+    一种样式只控制一种属性的叫做单一样式
+    一种样式控制多种属性的叫做复合样式。
+    复合样式举例：background,border,font等等
+    复合的写法是通过空格实现的，
+    例如background:url red repeat 0 0;
+        border:2px black solid;
+        border-right:2px black solid;
+        上述没有顺序的要求
+        但有些要有顺序要求，比如font，其要求是最少要有两个值size和family，例如；fond:30px 宋体。顺序不能改变
+        ，一般来说顺序是：除了大小和字体前后顺序不可以变其他属性例如加粗和是否斜体和行高没有呢顺序要求。
+    注意复合样式和单一样式不要混着写，如果要混着写，尽量先写复合样式然后再写单一样式。
+【30】id选择器及其注意事项
+    css的写法:#elem{}
+    html写法：id="elem",用法见28
+    注意：
+    在一个页面中，id是唯一的
+    命名规范同c语言和python中标识符的命名规范，不同的是可以多一个-符号
+    命名方式，驼峰式，下划线式，断线式。
+【31】class选择器
+    用法类似于id 选择器
+    但也有几种区别：
+    1、class选择器是可以重复使用的
+    2、可以添加多个class样式
+    3、添加多个样式的时候，样式的优先级根据css决定，而不是class属性中的属性。
+    4.标签+类的写法
+    css的写法：.elem{}
+    html的写法：class="elem"
+    用法示例
+            <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            <style>
+            .box{color: #066000;; }
+            </style> 
+        </head>
+        <body>
+        <p class="box">zjhsjhhaojah</p>                             
+        </body>
+        </html>
+【32】标签群组通配等选择器
+    1）标签选择器(target选择器)
+        div{}就是个例子，然而这样会使得标签全部都变成选择器类型，所以不用其来添加样式
+        而是用这个方法来改变系统的默认样式或者应用在复杂选择器中（例如层次选择器）
+    2）群组选择器
+        写法：css:div,span{},p
+        可应用于多种形式，以下是举例。
+                <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            <style>
+            div,#text,.box{color: #066000;; }【这里应用了id，标签，class选择器，等等使得多个标签类型得以统一格式，一举多得】
+            </style> 
+        </head>
+        <body>
+        <p class="box">zjhsjhhaojah</p>
+        <div>这是一个块</div>                             
+        <h2 id="text">这是一个标题</h2>
+        </body>
+        </html>
+    3）通配选择器
+        可以给所有的标签都添加样式
+        写法：*{}---→h1 li span p等标签
+        举例:
+            <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+        *{color:aquamarine;border: blue;background-color: cadetblue;}
+        </style> 
+    </head>
+    <body>
+    <p >zjhsjhhaojah</p>
+    <div>这是一个块</div>                             
+    <h2 >这是一个标题</h2>
+    </body>
+    </html>
+    尽量避免通配选择器，一般用于去掉所有标签的默认样式
+【33】层次选择器
+    层次选择器有以下几种用法：
+    后代：M N 
+    举例如下：<!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Document</title>
+                    <style>
+                    ul li{border:1px red solid;}
+                    <!--注释：这里ul和li空格隔开了，所以只会指定ul下的li有这种样式,但是ol下的li没有这种样式-->
+                    </style> 
+                </head>
+                <body>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ol>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </body>
+                </html>
+    所有的下级都被添加同一个样式
+    父子：M>N 
+    只有下面一个层次被添加样式
+    示例如下：
+                <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            <style>
+            #list>li{border:1px red solid;}
+            <!--注释：这里ul用地址表示，所以只会指定ul下的一级li有这种样式,但是ul下二级的li没有这种样式-->
+            </style> 
+        </head>
+        <body>
+            <ul id="list">
+                <li></li>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </body>
+        </html>
+    兄弟：M~N
+    找到当前m下面的所有兄弟n标签，但是上面没有办法显示，首要前提是同级，没有包含的关系
+                <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+            div~h2{background-color: crimson;}
+                </style> 
+            </head>
+            <body>
+            <div>这是一个块</div>
+            <p>这是一个段落</p>
+            <h2>这是一个标题</h2>
+            </body>
+            </html>
+    相邻：M+N
+    当前m相邻的标签添加样式
+    注意：只会添加相邻的标签样式，而不相邻的不会去添加样式，
+        而且注意，这里只会添加相邻标签的样式但是自己本身不会被添加，所以只会有一个标签被添加样式。
+        示例如下：
+                <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            <style>
+        div+p{background-color: crimson;}
+            </style> 
+        </head>
+        <body>
+        <div>这是一个块</div>
+        <p>这是一个段落</p>
+        <h2>这是一个标题</h2>
+        </body>
+        </html>
+【34】属性选择器
+    写法：属性[操作]{}
+    示例如下：
+            <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            <style>
+        div[class]{background-color: darkblue;}
+            </style> 
+        </head>
+        <body>
+        <div>这是一个块</div>
+            <div class="xsa">zamsahcc</div>
+            <div class="sahja">asasxasxa</div>
+        </body>
+        </html>
+        上个例子只对具有class的标签添加属性
+        或者对class属性进行细化，则可以跟精确的选择：
+                <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+            div[class="xsa"]{background-color: darkblue;}
+                </style> 
+            </head>
+            <body>
+            <div>这是一个块</div>
+                <div class="xsa">zamsahcc</div>
+                <div class="sahja">asasxasxa</div>
+            </body>
+            </html>
+        或者对含有同一个词的同属性的标签进行添加样式：
+                        <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Document</title>
+                    <style>
+                div[class*="xsa"]{background-color: darkblue;}
+                    </style> 
+                </head>
+                <body>
+                <div>这是一个块</div>
+                    <div class="xsa">zamsahcc</div>
+                    <div class="xsa-jahxija">zamsahcc</div>
+                    <div class="sahja">asasxasxa</div>
+                </body>
+                </html>
+      下面是匹配的规则：
+      =:完全匹配
+      *=：部分匹配
+      ^=：起始匹配
+      $=:结束匹配
+      组合筛选：div[class][id]{background-color: darkblue;}
+【35】hover等伪选择器
+    伪类选择器：
+    css伪类选择器用于向某些元素添加特殊的效果。一般用于初始样式添加不上的时候，用伪类来添加。
+    写法：M:伪类选择器：
+    ：link (访问前的样式)只能添加给a标签
+    :visited（访问后的样式）只能添加给a标签
+    :hover（鼠标移入时的样式）可以给所有标签
+    :active（鼠标按下时候 的样式）可以给所有的标签 
+    注意：如果四个伪类都具有，那么要注意顺序:LVHA
+         一般来说网站都会这样去设置：a{}和a:hover{}。
+         举例如下：
+                    <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+            div{width: 200px;height: 200px; background-color: darkblue;}
+            div:hover{background-color: darkorange;}
+            div:active{background-color: darkslategrey;}
+                </style> 
+            </head>
+            <body>
+            <div>这是一个块</div>
+            </body>
+            </html>
+        这时候当鼠标移入的时候块的背景色会改变,鼠标按下的时候又会变色。
+        下面是多个伪类选择器同时使用时的示例
+                    <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+                    a:link{color: deeppink;}
+                    a:visited{color: dimgray;}
+                    a:hover{color: goldenrod;}
+                    a:active{color: indigo;}
+                </style> 
+            </head>
+            <body>
+            <div>这是一个块</div>
+            <a href="">这是一个链接</a>
+            </body>
+            </html>
+            想要恢复未访问时候的链接颜色，只需要清除缓存就可以了chorm浏览器里的设置有清楚缓存的选项
+【36】after等伪类选择器
+    1）:after,:before伪选择器
+    通过伪类的方式给元素添加一些文本内容。例如
+                <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+                div::after{content:"nmsl";}
+                </style> 
+            </head>
+            <body>
+            <div>恰野味的</div>
+            </body>
+            </html>
+     而before则是在前面进行文本添加操作
+     这样咋一看操作很多余，但是如果你只是想将nmsl这个文字单独拎出来进行样式添加然后再把这一段文字添加回去这样就很方便。这样就不用span的来进行设置。例如div::after{content:"nmsl";color:red:}
+     after是伪元素，和伪类不一样
+     2）：checked，disabled，focus都是针对表单进行的操作
+        作用如下
+       checked：点击后由默认变成自己所设置的样式，针对checkbox
+       disabled：无法对表单进行操作
+       focus:当光标移入的时候进行的属性变换,针对输入框text   
+       示例如下：<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+                <style>
+                :checked{width: 100px;height: 100px;}
+                :focus{background-color: rgb(248, 101, 16);}
+                </style> 
+            </head>
+            <body>
+            <input type="checkbox">
+            <input type="checkbox"disabled>
+            <input type="checkbox">
+            <input type="text">
+            </body>
+            </html>
+【37】结构伪类选择器
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+
+                
+
+        
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+
+
+
+
+
